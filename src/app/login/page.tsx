@@ -31,19 +31,19 @@ export default function LoginPage() {
       localStorage.setItem('user', JSON.stringify(data.user))
       router.push('/dashboard')
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Erro ao fazer login')
+      setError(err instanceof Error ? err.message : 'Error logging in')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-muted/60 to-muted flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-muted/60 to-muted flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-1 pb-6">
-          <CardTitle className="text-2xl font-bold">Entrar</CardTitle>
+          <CardTitle className="text-2xl font-bold">Login</CardTitle>
           <CardDescription>
-            Acesse sua conta para gerenciar suas tarefas
+            Access your account to manage your tasks
           </CardDescription>
         </CardHeader>
 
@@ -62,13 +62,13 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="seu@email.com"
+                placeholder="your@email.com"
                 required
               />
             </div>
 
             <div className="space-y-1.5">
-              <Label htmlFor="password">Senha</Label>
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -84,9 +84,9 @@ export default function LoginPage() {
             </Button>
 
             <p className="text-center text-sm text-muted-foreground pt-2">
-              Não tem conta?{' '}
+              Don&apos;t have an account?{' '}
               <Link href="/register" className="text-primary hover:underline font-medium">
-                Cadastre-se
+                Register
               </Link>
             </p>
           </form>

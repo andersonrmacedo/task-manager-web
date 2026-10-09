@@ -30,19 +30,19 @@ export default function RegisterPage() {
 
       router.push('/login')
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Erro ao criar conta')
+      setError(err instanceof Error ? err.message : 'Error creating account')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-muted/60 to-muted flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-muted/60 to-muted flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-1 pb-6">
-          <CardTitle className="text-2xl font-bold">Criar conta</CardTitle>
+          <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
           <CardDescription>
-            Cadastre-se para começar a gerenciar suas tarefas
+            Sign up to start managing your tasks
           </CardDescription>
         </CardHeader>
 
@@ -55,13 +55,13 @@ export default function RegisterPage() {
             )}
 
             <div className="space-y-1.5">
-              <Label htmlFor="name">Nome</Label>
+              <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Seu nome"
+                placeholder="Your name"
                 required
               />
             </div>
@@ -73,13 +73,13 @@ export default function RegisterPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="seu@email.com"
+                placeholder="your@email.com"
                 required
               />
             </div>
 
             <div className="space-y-1.5">
-              <Label htmlFor="password">Senha</Label>
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -92,13 +92,13 @@ export default function RegisterPage() {
             </div>
 
             <Button type="submit" className="w-full mt-2" disabled={loading}>
-              {loading ? 'Criando conta...' : 'Criar conta'}
+              {loading ? 'Creating account...' : 'Create Account'}
             </Button>
 
             <p className="text-center text-sm text-muted-foreground pt-2">
-              Já tem conta?{' '}
+              Already have an account?{' '}
               <Link href="/login" className="text-primary hover:underline font-medium">
-                Entrar
+                Login
               </Link>
             </p>
           </form>
