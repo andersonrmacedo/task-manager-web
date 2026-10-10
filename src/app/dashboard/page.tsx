@@ -26,10 +26,10 @@ const STATUS_STYLE: Record<TaskStatus, string> = {
 };
 
 const FILTER_LABEL: Record<Filter, string> = {
-  all: "Todas",
-  pending: "Pendentes",
-  in_progress: "Em andamento",
-  done: "Concluídas",
+  all: "All",
+  pending: "Pending",
+  in_progress: "In Progress",
+  done: "Done",
 };
 
 export default function DashboardPage() {
@@ -137,51 +137,51 @@ export default function DashboardPage() {
             <h1 className="text-lg font-semibold">Task Manager</h1>
             {userName && (
               <p className="text-sm text-muted-foreground">
-                Olá, {userName} 👋
+                Hello, {userName} 👋
               </p>
             )}
           </div>
           <Button variant="ghost" size="sm" onClick={handleLogout}>
-            Sair
+            Logout
           </Button>
         </div>
       </header>
 
       <main className="max-w-2xl mx-auto px-4 py-8 space-y-6">
-        {/* Título + botão */}
+        {/* Title + button */}
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold">Minhas tarefas</h2>
+          <h2 className="text-xl font-bold">My Tasks</h2>
           <Button size="sm" onClick={() => setShowForm(!showForm)}>
-            {showForm ? "Cancelar" : "+ Nova tarefa"}
+            {showForm ? "Cancel" : "+ New Task"}
           </Button>
         </div>
 
-        {/* Formulário */}
+        {/* Form */}
         {showForm && (
           <Card>
             <CardContent className="pt-6">
               <form onSubmit={handleCreate} className="space-y-3">
                 <Input
-                  placeholder="Título da tarefa"
+                  placeholder="Task title"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   required
                   autoFocus
                 />
                 <Input
-                  placeholder="Descrição (opcional)"
+                  placeholder="Description (optional)"
                   value={newDescription}
                   onChange={(e) => setNewDescription(e.target.value)}
                 />
                 <Button type="submit" className="w-full" disabled={creating}>
-                  {creating ? "Salvando..." : "Salvar tarefa"}
+                  {creating ? "Saving..." : "Save Task"}
                 </Button>
               </form>
             </CardContent>
           </Card>
         )}
 
-        {/* Filtros */}
+        {/* Filters */}
         <div className="flex gap-2 flex-wrap">
           {(["all", "pending", "in_progress", "done"] as Filter[]).map((f) => (
             <Button
@@ -195,14 +195,14 @@ export default function DashboardPage() {
           ))}
         </div>
 
-        {/* Lista */}
+        {/* List */}
         {loading ? (
           <p className="text-center text-muted-foreground py-12">
-            Carregando...
+            Loading...
           </p>
         ) : tasks.length === 0 ? (
           <p className="text-center text-muted-foreground py-12">
-            Nenhuma tarefa encontrada.
+            No tasks found.
           </p>
         ) : (
           <div className="space-y-3">
@@ -236,9 +236,9 @@ export default function DashboardPage() {
                         }
                         className={`text-xs font-medium px-2 py-1 rounded-full border cursor-pointer focus:outline-none ${STATUS_STYLE[task.status]}`}
                       >
-                        <option value="pending">Pendente</option>
-                        <option value="in_progress">Em andamento</option>
-                        <option value="done">Concluída</option>
+                        <option value="pending">Pending</option>
+                        <option value="in_progress">In Progress</option>
+                        <option value="done">Done</option>
                       </select>
 
                       <Button
